@@ -3,7 +3,7 @@
     <div>
       <Logo />
       <h1 class="title">
-        お天気アプリ
+        お天気アプリかな？
       </h1>
       <div class="links">
         <a
