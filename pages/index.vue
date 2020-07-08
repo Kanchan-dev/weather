@@ -3,7 +3,7 @@
     <div>
       <Logo />
       <h1 class="title">
-        weather_ar
+        お天気アプリ
       </h1>
       <div class="links">
         <a
