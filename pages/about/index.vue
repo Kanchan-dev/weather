@@ -3,46 +3,30 @@
     <div>
       <!-- <Logo /> -->
       <h1 class="title">
-        XXXX
+        About
       </h1>
-			<div>
-				<nuxt-link to="/about">About</nuxt-link>
+      <div>
+				<nuxt-link to="/">TOP</nuxt-link>
 			</div>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Meta from '~/assets/mixins/meta'
 export default {
+	mixins:[Meta],
 	data () {
     return {
-      title: 'Hello World!'
+      meta: {
+        title: 'About',
+        description: 'このページについて',
+        type: 'article',
+        url: 'https://example.com/test',
+        image: 'https://example.com/img/ogp/test.jpg',
+      },
     }
-  },
-  head () {
-    return {
-      titleTemplate: null,
-      title: 'サイト名',
-    }
-  },
+  }
 }
 </script>
 
