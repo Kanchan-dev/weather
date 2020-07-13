@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
+      <!-- <Logo /> -->
       <h1 class="title">
-        お天気アプリかな？
+        XXXX
       </h1>
       <div class="links">
         <a
@@ -28,7 +28,22 @@
 </template>
 
 <script>
-export default {}
+export default {
+	data () {
+    return {
+      title: 'Hello World!'
+    }
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        // `hid` は一意の識別子として使用されます。 `vmid` は動作しないので使わないでください。
+        { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
+    }
+  }
+}
 </script>
 
 <style>
