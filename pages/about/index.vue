@@ -41,8 +41,8 @@ export default {
 	  targetBox.insertAdjacentHTML('beforebegin',this.results.data[0].content.rendered);
 	});
 	
-	const testBox = document.querySelector("#testBox");
-	testBox.insertAdjacentHTML('beforebegin',this.tag);
+	/* const testBox = document.querySelector("#testBox");
+	testBox.insertAdjacentHTML('beforebegin',this.tag); */
     
     //   console.log(this.results[0]['content']['rendered'])
     // console.log('?????')
@@ -51,13 +51,13 @@ export default {
 
     //   targetBox.insertAdjacentHTML('beforebegin','<p>aaa</p>');
   },
-  async asyncData ({ params }) {
+  /* async asyncData ({ params }) {
     const { data } = await axios.get(`https://tekutekustudio.com/wp/wp-json/wp/v2/posts`)
     return { 
 		list: data,
 		tag:data[0]['content'].rendered
 	 }
-  }
+  } */
 };
 </script>
 
