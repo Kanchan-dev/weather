@@ -81,5 +81,13 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+	  filenames: {
+		  app: () => '[name].js',
+		  chunk: () => '[name].js',
+		  css: () => '[name].js',
+		  img: () => '[path][name].[ext]',
+		  font: () => '[path][name].[ext]',
+		  video: () => '[path][name].[ext]'
+	  },
   }
 }
