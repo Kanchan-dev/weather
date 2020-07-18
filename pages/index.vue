@@ -4,7 +4,8 @@
       <Logo />
       <h1 class="title">weather_ar</h1>
 
-	  <div v-html="results[0]['content']['rendered']"></div>
+	  <!-- <div v-html="results[0]['content']['rendered']"></div> -->
+	  <div id="targetBox"></div>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -30,11 +31,17 @@ export default {
 	  results: [],
     };
   },
+  mounted() {
+	  const targetBox = document.querySelector('#targetBox')
+	//   console.log(this.results[0]['content']['rendered'])
+	targetBox.insertAdjacentHTML('beforebegin',this.results[0]['content']['rendered']);
+	//   targetBox.insertAdjacentHTML('beforebegin','<p>aaa</p>');
+  },
   async asyncData({ app }) {
     const baseUrl = 'https://tekutekustudio.com/wp/wp-json/wp/v2/posts'
     const getUrl = encodeURI(baseUrl)
 	const response = await app.$axios.$get(getUrl)
-	console.log(response[0]['content']['rendered'])
+	
     return {
       results: response
     }
