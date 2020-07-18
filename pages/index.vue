@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
+      <!-- <Logo /> -->
       <h1 class="title">weather_ar</h1>
 
 	  <!-- <div v-html="results[0]['content']['rendered']"></div> -->
@@ -34,7 +34,10 @@ export default {
   mounted() {
 	  const targetBox = document.querySelector('#targetBox')
 	//   console.log(this.results[0]['content']['rendered'])
+	console.log(this.results[0]['content']['rendered'])
 	targetBox.insertAdjacentHTML('beforebegin',this.results[0]['content']['rendered']);
+	alert(this.results[0]['content']['rendered'])
+
 	//   targetBox.insertAdjacentHTML('beforebegin','<p>aaa</p>');
   },
   async asyncData({ app }) {
