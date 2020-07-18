@@ -34,7 +34,7 @@ export default {
     const baseUrl = 'https://tekutekustudio.com/wp/wp-json/wp/v2/posts'
     const getUrl = encodeURI(baseUrl)
 	const response = await app.$axios.$get(getUrl)
-	// console.log(response[0]['content']['rendered'])
+	console.log(response[0]['content']['rendered'])
     return {
       results: response
     }
