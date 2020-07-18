@@ -5,7 +5,7 @@
       <h1 class="title">weather_ar</h1>
 
       <!-- <div v-html="results[0]['content']['rendered']"></div> -->
-	  <nuxt-link to="/about">ABOUT</nuxt-link>
+	  <nuxt-link to="/about/">ABOUT</nuxt-link>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
