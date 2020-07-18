@@ -2,32 +2,49 @@
   <div class="container">
     <div>
       <!-- <Logo /> -->
-      <h1 class="title">
-        About
-      </h1>
-      <div>
-				<nuxt-link to="/">TOP</nuxt-link>
-			</div>
+      <h1 class="title">About</h1>
+	  <div>
+        <nuxt-link to="/">TOP</nuxt-link>
+      </div>
+	  <div id="targetBox"></div>
+      
     </div>
   </div>
 </template>
 
 <script>
-import Meta from '~/assets/mixins/meta'
+import axios from "axios";
+import Meta from "~/assets/mixins/meta";
 export default {
-	mixins:[Meta],
-	data () {
+  mixins: [Meta],
+  data() {
     return {
       meta: {
-        title: 'About',
-        description: 'このページについて',
-        type: 'article',
-        url: 'https://example.com/test',
-        image: 'https://example.com/img/ogp/test.jpg',
-      },
-    }
+        title: "About",
+        description: "このページについて",
+        type: "article",
+        url: "https://example.com/test",
+        image: "https://example.com/img/ogp/test.jpg"
+	  },
+	  results: []
+    };
+  },
+  mounted() {
+    axios.get("https://tekutekustudio.com/wp/wp-json/wp/v2/posts").then(response => {
+	  this.results = response;
+	  console.log(this.results.data[0].content.rendered)
+	  const targetBox = document.querySelector("#targetBox");
+	  targetBox.insertAdjacentHTML('beforebegin',this.results.data[0].content.rendered);
+    });
+    
+    //   console.log(this.results[0]['content']['rendered'])
+    // console.log('?????')
+    // targetBox.insertAdjacentHTML('beforebegin',this.results[0]['content']['rendered']);
+    // alert(this.results[0]['content']['rendered'])
+
+    //   targetBox.insertAdjacentHTML('beforebegin','<p>aaa</p>');
   }
-}
+};
 </script>
 
 <style>
@@ -41,16 +58,8 @@ export default {
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;

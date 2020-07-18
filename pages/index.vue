@@ -5,7 +5,7 @@
       <h1 class="title">weather_ar</h1>
 
       <!-- <div v-html="results[0]['content']['rendered']"></div> -->
-      <div id="targetBox"></div>
+	  <nuxt-link to="/about">ABOUT</nuxt-link>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -33,12 +33,12 @@ export default {
     };
   },
   mounted() {
-    axios.get("https://tekutekustudio.com/wp/wp-json/wp/v2/posts").then(response => {
+    /* axios.get("https://tekutekustudio.com/wp/wp-json/wp/v2/posts").then(response => {
 	  this.results = response;
 	  console.log(this.results.data[0].content.rendered)
 	  const targetBox = document.querySelector("#targetBox");
 	  targetBox.insertAdjacentHTML('beforebegin',this.results.data[0].content.rendered);
-    });
+    }); */
     
     //   console.log(this.results[0]['content']['rendered'])
     // console.log('?????')
