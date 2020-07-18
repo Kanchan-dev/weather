@@ -1,30 +1,23 @@
 <template>
   <div class="container">
     <div>
-      <!-- <Logo /> -->
-      <h1 class="title">
-        XXXX
-      </h1>
-			<div>
-				<nuxt-link to="/about">About</nuxt-link>
-			</div>
+      <Logo />
+      <h1 class="title">weather_ar</h1>
+
+	  <div v-html="results[0]['content']['rendered']"></div>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
           target="_blank"
           rel="noopener noreferrer"
           class="button--green"
-        >
-          Documentation
-        </a>
+        >Documentation</a>
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
           rel="noopener noreferrer"
           class="button--grey"
-        >
-          GitHub
-        </a>
+        >GitHub</a>
       </div>
     </div>
   </div>
@@ -32,18 +25,21 @@
 
 <script>
 export default {
-	data () {
+  data() {
     return {
-      title: 'Hello World!'
-    }
+	  results: [],
+    };
   },
-  head () {
+  async asyncData({ app }) {
+    const baseUrl = 'https://tekutekustudio.com/wp/wp-json/wp/v2/posts'
+    const getUrl = encodeURI(baseUrl)
+	const response = await app.$axios.$get(getUrl)
+	// console.log(response[0]['content']['rendered'])
     return {
-      titleTemplate: null,
-      title: 'サイト名',
+      results: response
     }
-  },
-}
+  }
+};
 </script>
 
 <style>
@@ -57,16 +53,8 @@ export default {
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
