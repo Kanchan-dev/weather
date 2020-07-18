@@ -23,7 +23,24 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+	htmlAttrs: {
+		prefix: 'og: http://ogp.me/ns#'
+	},
+	titleTemplate: '%s - サイト名',
+	  meta: [
+		  { hid: 'description', name: 'description', content: '共通ディスクリプション' },
+		  { hid: 'og:site_name', property: 'og:site_name', content: 'サイト名' },
+		  { hid: 'og:type', property: 'og:type', content: 'website' },
+		  { hid: 'og:url', property: 'og:url', content: 'https://example.com' },
+		  { hid: 'og:title', property: 'og:title', content: 'サイト名' },
+		  { hid: 'og:description', property: 'og:description', content: '共通ディスクリプション' },
+		  { hid: 'og:image', property: 'og:image', content: 'https://example.com/img/ogp/common.jpg' },
+		  // { property: 'article:publisher', content: 'FacebookURL' },
+		  // { property: 'fb:app_id', content: 'FacebookAppID' },
+		  // { name: 'twitter:card', content: 'summary' },
+		  // { name: 'twitter:site', content: '@Twitter' },
+    ],
   },
   /*
   ** Global CSS
