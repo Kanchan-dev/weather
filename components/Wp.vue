@@ -32,7 +32,7 @@ export default {
         url: "https://example.com/test",
         image: "https://example.com/img/ogp/test.jpg"
 	  },
-	  title: 'Hello World!',
+	  title: '',
       results: [],
       list: [],
 	  tag: "",
