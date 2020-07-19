@@ -55,16 +55,19 @@ export default {
 
     axios.get(apiURL).then(response => {
 	  this.results = response;
-	  const tag = this.results.data["content"]["rendered"];
-      console.log(tag);
+	  
+      
       if (isSingle) {
+		const tag = this.results.data["content"]["rendered"];
+		console.log(tag);
         const targetBox = document.querySelector("#targetBox");
         targetBox.insertAdjacentHTML(
           "beforebegin",
-          tag+''
+          tag
 		);
 		
       } else {
+		console.log('1こっち')
         const listBox = document.querySelector("#listBox");
         let listTag = '<ul class="list">';
         for (var i = 0; i < this.results.data.length; i++) {
