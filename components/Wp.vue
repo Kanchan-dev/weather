@@ -1,36 +1,21 @@
 <template>
-  <div class="container">
-    <div>
-      <!-- <Logo /> -->
-      <h1 class="title">About</h1>
-	  <div>
-        <a href="/about/">About</a>
-      </div>
-      <div>
-        <nuxt-link to="/">TOP</nuxt-link>
-      </div>
-      <!-- <div id="listBox"></div> -->
-      <!-- <div id="targetBox"></div> -->
-	  <!-- <Tw /> -->
-	  <Wp />
-	  <!-- <Tweet :id="tweets"/> -->
-	<!-- <Tweet id="1284468430817513472"></Tweet> -->
-    </div>
+  <div>
+	  <div id="targetBox2"></div>
+	  <div id="listBox2"></div>
   </div>
 </template>
+
 
 <script>
 import axios from "axios";
 import Meta from "~/assets/mixins/meta";
 import Tw from '~/components/Tw.vue'
-import Wp from '~/components/Wp.vue'
 import { Tweet, Moment, Timeline } from 'vue-tweet-embed'
 export default {
   mixins: [Meta],
   components: {
 	Tweet: Tweet,
-	Tw,
-	Wp
+	Tw
   },
   data() {
     return {
@@ -65,7 +50,7 @@ export default {
       if (isSingle) {
 		const tag = this.results.data["content"]["rendered"];
 		console.log(tag);
-        const targetBox = document.querySelector("#targetBox");
+        const targetBox = document.querySelector("#targetBox2");
         targetBox.insertAdjacentHTML(
           "beforebegin",
           tag
@@ -73,7 +58,7 @@ export default {
 		
       } else {
 		console.log('1こっち')
-        const listBox = document.querySelector("#listBox");
+        const listBox = document.querySelector("#listBox2");
         let listTag = '<ul class="list">';
         for (var i = 0; i < this.results.data.length; i++) {
 		  const id = this.results.data[i]["link"].split("?p=")[1]
@@ -83,9 +68,14 @@ export default {
         }
         listTag += "</ul>";
         listBox.insertAdjacentHTML("beforebegin", listTag);
-      }
-    });
-
+	  }
+	  twttr.widgets.load()
+	});
+	let mapScript = document.createElement('script');
+	// let src  = await this.$axios.$get("https://platform.twitter.com/widgets.js")
+	/* mapScript.appendChild(document.createTextNode("https://platform.twitter.com/widgets.js"));
+	console.log(mapScript)
+	document.head.appendChild(mapScript); */
     /* const testBox = document.querySelector("#testBox");
 	testBox.insertAdjacentHTML('beforebegin',this.tag); */
 
@@ -105,41 +95,3 @@ export default {
   } */
 };
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.list {
-  text-align: left;
-  margin: 30px 0;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
