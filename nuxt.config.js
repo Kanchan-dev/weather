@@ -22,7 +22,9 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+	  { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+		{ rel: 'stylesheet', href: 'https://tekutekustudio.com/wp/wp-includes/css/dist/block-library/style.min.css' },
+		{ rel: 'stylesheet', href: 'https://tekutekustudio.com/wp/wp-content/themes/twentytwenty/style.css' }
     ],
 	htmlAttrs: {
 		prefix: 'og: http://ogp.me/ns#'

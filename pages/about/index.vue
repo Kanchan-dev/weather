@@ -4,11 +4,13 @@
       <!-- <Logo /> -->
       <h1 class="title">About</h1>
 	  <div>
+        <a href="/about/">About</a>
+      </div>
+      <div>
         <nuxt-link to="/">TOP</nuxt-link>
       </div>
-	  <div id="testBox"></div>
-	  <div id="targetBox"></div>
-      
+      <div id="listBox"></div>
+      <div id="targetBox"></div>
     </div>
   </div>
 </template>
@@ -26,31 +28,56 @@ export default {
         type: "article",
         url: "https://example.com/test",
         image: "https://example.com/img/ogp/test.jpg"
-	  },
-	  results: [],
-	  list: [],
-	  tag:''
+      },
+      results: [],
+      list: [],
+      tag: ""
     };
   },
   mounted() {
-	console.log(this.tag);
-    axios.get("https://tekutekustudio.com/wp/wp-json/wp/v2/posts").then(response => {
-	  this.results = response;
-	//   console.log(this.results.data.length)
-	  const targetBox = document.querySelector("#targetBox");
-	  targetBox.insertAdjacentHTML('beforebegin',this.results.data[0].content.rendered);
-	});
-	
-	/* const testBox = document.querySelector("#testBox");
+    const param = location.search.substr(1);
+    let apiURL = "https://tekutekustudio.com/wp/wp-json/wp/v2/posts";
+    let isSingle = false;
+    if (param) {
+      console.log("ある");
+      isSingle = true;
+      const id = param.split("key=")[1];
+      apiURL += `/${id}`;
+    }
+
+    axios.get(apiURL).then(response => {
+      this.results = response;
+      console.log(this.results);
+      if (isSingle) {
+        const targetBox = document.querySelector("#targetBox");
+        targetBox.insertAdjacentHTML(
+          "beforebegin",
+          this.results.data["content"]["rendered"]
+        );
+      } else {
+        const listBox = document.querySelector("#listBox");
+        let listTag = '<ul class="list">';
+        for (var i = 0; i < this.results.data.length; i++) {
+		  const id = this.results.data[i]["link"].split("?p=")[1]
+          console.log(this.results.data[i]["title"]["rendered"]);
+          console.log(id);
+          listTag += `<li><a href="./?key=${id}">${this.results.data[i]["title"]["rendered"]}</a></li>`;
+        }
+        listTag += "</ul>";
+        listBox.insertAdjacentHTML("beforebegin", listTag);
+      }
+    });
+
+    /* const testBox = document.querySelector("#testBox");
 	testBox.insertAdjacentHTML('beforebegin',this.tag); */
-    
+
     //   console.log(this.results[0]['content']['rendered'])
     // console.log('?????')
     // targetBox.insertAdjacentHTML('beforebegin',this.results[0]['content']['rendered']);
     // alert(this.results[0]['content']['rendered'])
 
     //   targetBox.insertAdjacentHTML('beforebegin','<p>aaa</p>');
-  },
+  }
   /* async asyncData ({ params }) {
     const { data } = await axios.get(`https://tekutekustudio.com/wp/wp-json/wp/v2/posts`)
     return { 
@@ -69,6 +96,11 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.list {
+  text-align: left;
+  margin: 30px 0;
 }
 
 .title {
