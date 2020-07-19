@@ -70,28 +70,19 @@ export default {
         listBox.insertAdjacentHTML("beforebegin", listTag);
 	  }
 	  twttr.widgets.load()
-	});
-	let mapScript = document.createElement('script');
-	// let src  = await this.$axios.$get("https://platform.twitter.com/widgets.js")
-	/* mapScript.appendChild(document.createTextNode("https://platform.twitter.com/widgets.js"));
-	console.log(mapScript)
-	document.head.appendChild(mapScript); */
-    /* const testBox = document.querySelector("#testBox");
-	testBox.insertAdjacentHTML('beforebegin',this.tag); */
-
-    //   console.log(this.results[0]['content']['rendered'])
-    // console.log('?????')
-    // targetBox.insertAdjacentHTML('beforebegin',this.results[0]['content']['rendered']);
-    // alert(this.results[0]['content']['rendered'])
-
-    //   targetBox.insertAdjacentHTML('beforebegin','<p>aaa</p>');
+	  this.loadEmbedJS()
+	});	
+  },
+  beforeDestroy () {
+    delete window.instgrm
+  },
+  methods: {
+    loadEmbedJS () {
+      const script = document.createElement('script')
+      script.async = script.defer = true
+      script.src = '//www.instagram.com/embed.js'
+      this.$el.appendChild(script)
+    }
   }
-  /* async asyncData ({ params }) {
-    const { data } = await axios.get(`https://tekutekustudio.com/wp/wp-json/wp/v2/posts`)
-    return { 
-		list: data,
-		tag:data[0]['content'].rendered
-	 }
-  } */
 };
 </script>
