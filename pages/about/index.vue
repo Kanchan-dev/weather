@@ -11,6 +11,9 @@
       </div>
       <div id="listBox"></div>
       <div id="targetBox"></div>
+	  
+	  <Tweet :id="tweets"/>
+	<!-- <Tweet id="1284468430817513472"></Tweet> -->
     </div>
   </div>
 </template>
@@ -18,8 +21,12 @@
 <script>
 import axios from "axios";
 import Meta from "~/assets/mixins/meta";
+import { Tweet, Moment, Timeline } from 'vue-tweet-embed'
 export default {
   mixins: [Meta],
+  components: {
+    Tweet: Tweet
+  },
   data() {
     return {
       meta: {
@@ -31,7 +38,8 @@ export default {
       },
       results: [],
       list: [],
-      tag: ""
+	  tag: "",
+	  tweets:"1284468430817513472" 
     };
   },
   mounted() {
@@ -46,14 +54,16 @@ export default {
     }
 
     axios.get(apiURL).then(response => {
-      this.results = response;
-      console.log(this.results);
+	  this.results = response;
+	  const tag = this.results.data["content"]["rendered"];
+      console.log(tag);
       if (isSingle) {
         const targetBox = document.querySelector("#targetBox");
         targetBox.insertAdjacentHTML(
           "beforebegin",
-          this.results.data["content"]["rendered"]
-        );
+          tag+''
+		);
+		
       } else {
         const listBox = document.querySelector("#listBox");
         let listTag = '<ul class="list">';
