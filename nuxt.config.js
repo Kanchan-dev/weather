@@ -25,7 +25,7 @@ export default {
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
 		],
 		script: [
-			{ src: 'https://platform.twitter.com/widgets.js' }
+			{ src: 'https://platform.twitter.com/widgets.js', async: true }
 		],
 		htmlAttrs: {
 			prefix: 'og: http://ogp.me/ns#'
