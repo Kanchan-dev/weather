@@ -27,6 +27,12 @@
 <script>
 import axios from "axios";
 export default {
+	head() {
+    return {
+      title: 'タイトル',
+    //   titleTemplate: ''
+    }
+  },
   data() {
     return {
       results: []

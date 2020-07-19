@@ -1,7 +1,7 @@
 export default {
   head () {
     return {
-      title: this.meta.title,
+    //   title: this.meta.title,
       meta: [
         { hid: 'description', name: 'description', content: this.meta.description },
         { hid: 'og:type', property: 'og:type', content: this.meta.type },

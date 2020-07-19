@@ -17,6 +17,12 @@ export default {
 	Tweet: Tweet,
 	Tw
   },
+  head() {
+    return {
+      title: this.title,
+    //   titleTemplate: ''
+    }
+  },
   data() {
     return {
       meta: {
@@ -25,7 +31,8 @@ export default {
         type: "article",
         url: "https://example.com/test",
         image: "https://example.com/img/ogp/test.jpg"
-      },
+	  },
+	  title: 'Hello World!',
       results: [],
       list: [],
 	  tag: "",
@@ -49,7 +56,10 @@ export default {
       
       if (isSingle) {
 		const tag = this.results.data["content"]["rendered"];
-		console.log(tag);
+		const title = this.results.data["title"]['rendered'];
+		console.log(title)
+		this.title = title
+		// console.log(tag);
         const targetBox = document.querySelector("#targetBox2");
         targetBox.insertAdjacentHTML(
           "beforebegin",
