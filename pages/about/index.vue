@@ -11,7 +11,7 @@
       </div>
       <div id="listBox"></div>
       <div id="targetBox"></div>
-	  <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">映画「天気の子」のシーンにもあった気象神社の氷川神社でお参りしてきた。<br><br>これ以上、災害が起きませんように！ <a href="https://t.co/Qv7lvoYs0D">pic.twitter.com/Qv7lvoYs0D</a></p>&mdash; Kanchan@一生駆け出しエンジニア (@kanchan_teku) <a href="https://twitter.com/kanchan_teku/status/1279646110714216449?ref_src=twsrc%5Etfw">July 5, 2020</a></blockquote>
+	  <Tw />
 	  <!-- <Tweet :id="tweets"/> -->
 	<!-- <Tweet id="1284468430817513472"></Tweet> -->
     </div>
@@ -21,11 +21,13 @@
 <script>
 import axios from "axios";
 import Meta from "~/assets/mixins/meta";
+import Tw from '~/components/Tw.vue'
 import { Tweet, Moment, Timeline } from 'vue-tweet-embed'
 export default {
   mixins: [Meta],
   components: {
-    Tweet: Tweet
+	Tweet: Tweet,
+	Tw
   },
   data() {
     return {
