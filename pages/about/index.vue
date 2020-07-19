@@ -3,7 +3,7 @@
     <div>
       <!-- <Logo /> -->
       <h1 class="title">About</h1>
-	  <div>
+      <div>
         <a href="/about/">About</a>
       </div>
       <div>
@@ -11,10 +11,10 @@
       </div>
       <!-- <div id="listBox"></div> -->
       <!-- <div id="targetBox"></div> -->
-	  <!-- <Tw /> -->
-	  <Wp />
-	  <!-- <Tweet :id="tweets"/> -->
-	<!-- <Tweet id="1284468430817513472"></Tweet> -->
+      <!-- <Tw /> -->
+      <Wp />
+      <!-- <Tweet :id="tweets"/> -->
+      <!-- <Tweet id="1284468430817513472"></Tweet> -->
     </div>
   </div>
 </template>
@@ -32,15 +32,17 @@ export default {
 	Tw,
 	Wp
   },
+  
   data() {
     return {
       meta: {
-        title: "About",
+        title: "あれ",
         description: "このページについて",
         type: "article",
         url: "https://example.com/test",
         image: "https://example.com/img/ogp/test.jpg"
-      },
+	  },
+	  title: 'Hello World!',
       results: [],
       list: [],
 	  tag: "",
@@ -50,7 +52,7 @@ export default {
   mounted() {
     const param = location.search.substr(1);
     let apiURL = "https://tekutekustudio.com/wp/wp-json/wp/v2/posts";
-    let isSingle = false;
+	let isSingle = false;
     if (param) {
       console.log("ある");
       isSingle = true;
@@ -60,8 +62,6 @@ export default {
 
     axios.get(apiURL).then(response => {
 	  this.results = response;
-	  
-      
       if (isSingle) {
 		const tag = this.results.data["content"]["rendered"];
 		console.log(tag);
