@@ -35,33 +35,11 @@ export default {
   },
   data() {
     return {
-      results: []
     };
   },
   mounted() {
-    /* axios.get("https://tekutekustudio.com/wp/wp-json/wp/v2/posts").then(response => {
-	  this.results = response;
-	  console.log(this.results.data[0].content.rendered)
-	  const targetBox = document.querySelector("#targetBox");
-	  targetBox.insertAdjacentHTML('beforebegin',this.results.data[0].content.rendered);
-    }); */
     
-    //   console.log(this.results[0]['content']['rendered'])
-    // console.log('?????')
-    // targetBox.insertAdjacentHTML('beforebegin',this.results[0]['content']['rendered']);
-    // alert(this.results[0]['content']['rendered'])
-
-    //   targetBox.insertAdjacentHTML('beforebegin','<p>aaa</p>');
   }
-  /* async asyncData({ app }) {
-    const baseUrl = "https://tekutekustudio.com/wp/wp-json/wp/v2/posts";
-    const getUrl = encodeURI(baseUrl);
-    const response = await app.$axios.$get(getUrl);
-    console.log(response);
-    return {
-      results: response
-    };
-  } */
 };
 </script>
 
